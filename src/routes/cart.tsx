@@ -17,7 +17,7 @@ export const Route = createFileRoute("/cart")({
       { property: "og:description", content: "Review your snack basket and check out in seconds." },
     ],
   }),
-  component: CartPage;
+  component: CartPage,
 });
 
 function CartPage() {
