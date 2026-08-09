@@ -8,6 +8,13 @@ import { categories, products } from "@/data/products";
 import { useCart } from "@/lib/cart";
 import { cn } from "@/lib/utils";
 
+type ShopSearch = {
+  category?: string;
+  q?: string;
+  sort?: "popular" | "price-asc" | "price-desc" | "rating";
+  wishlist?: boolean;
+};
+
 const searchSchema = z.object({
   category: z.string().optional(),
   q: z.string().optional(),
@@ -56,7 +63,7 @@ function Shop() {
     });
 
   const setSearch = (patch: Record<string, unknown>) =>
-    navigate({ search: (prev) => ({ ...prev, ...patch }) });
+    navigate({ search: (prev: ShopSearch) => ({ ...prev, ...patch }) });
 
   return (
     <>
@@ -178,7 +185,7 @@ function FilterChip({
   return (
     <Link
       to="/shop"
-      search={(prev) => ({ ...prev, category: to.category, wishlist: undefined })}
+      search={(prev: ShopSearch) => ({ ...prev, category: to.category, wishlist: undefined })}
       className={cn(
         "rounded-full border px-4 py-2 text-sm font-bold transition-colors",
         active
