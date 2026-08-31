@@ -9,10 +9,10 @@ import { useCart } from "@/lib/cart";
 import { cn } from "@/lib/utils";
 
 type ShopSearch = {
-  category?: string;
-  q?: string;
-  sort?: "popular" | "price-asc" | "price-desc" | "rating";
-  wishlist?: boolean;
+  category?: string | undefined;
+  q?: string | undefined;
+  sort?: "popular" | "price-asc" | "price-desc" | "rating" | undefined;
+  wishlist?: boolean | undefined;
 };
 
 const searchSchema = z.object({
